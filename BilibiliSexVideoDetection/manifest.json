@@ -1,0 +1,41 @@
+{
+	"name" : "BilibiliSexVideoDetection",
+	"description" : "Detect Sex Vedio in Bilibili",
+	"version" : "1.0",
+	"manifest_version" : 2,
+	
+	"permissions" : [
+		"declarativeContent",
+		"activeTab",
+		"tabs",
+		"https://comment.bilibili.com/*"
+	],
+	
+	"background" : {
+		"scripts" : ["background.js","jquery.min.js"],
+		"persistent" : false
+	},
+	
+	"page_action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"16" : "images/16.png",
+			"32" : "images/32.png",
+			"48" : "images/48.png"
+		}
+	},
+	
+	"content_scripts": [
+		{
+		"matches": ["https://www.bilibili.com/video/av*"],
+		"js": ["jquery.min.js", "contentscript.js"],
+		"run_at": "document_end"
+		}
+	],
+	
+	"icons": {
+		"16" : "images/16.png",
+		"32" : "images/32.png",
+		"48" : "images/48.png"
+	}
+}
